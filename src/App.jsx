@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getWeather } from './services/weatherService';
-import { handleIcon } from './utils/handleIcon';
+import SearchBar from './components/SearchBar';
+import WeatherDisplay from './components/WeatherDisplay';
 
-const Apgp = () => {
+const App = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const [city, setCity] = useState("New York");
+  const [city, setCity] = useState("New Jersey");
   const [searchCity, setSearchCity] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,14 +21,12 @@ const Apgp = () => {
   }, [city]);
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="searchCity">Enter your city</label>
-        <input type="text" name="searchCity" id="searchCity" placeholder="New York" value={searchCity} onChange={(e) => setSearchCity(e.target.value)} />
-        <button type="submit">Search for Weather</button>
-      </form>
-      <h1>{city} Weather</h1>
-      <img src={handleIcon(weatherData?.weather[0].description)} alt="weather-icon" />
-      <p>{weatherData?.main?.temp} degrees farenheit</p>
+      <SearchBar
+      searchCity={searchCity}
+      setSearchCity={setSearchCity}
+      handleSubmit={handleSubmit}
+      />
+     <WeatherDisplay weatherData={weatherData} city={city}/>
     </div>
   )
 }
