@@ -12,6 +12,9 @@ const App = () => {
   const vantaRef = useRef(null)
   function handleSubmit(e) {
     e.preventDefault();
+    if (!searchCity.trim()) {
+      return
+    }
     setCity(searchCity);
   }
 
