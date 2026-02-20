@@ -6,8 +6,8 @@ const WeatherDisplay = ({ weatherData, city }) => {
 
   return (
     <div className='bg-sky-200/70 rounded-2xl shadow-md p-6'><h1 className="text-2xl font-semibold mb-4"> {city} Weather</h1>
-    <img src={handleIcon(weather[0].description)} alt="Weather Icon" />
-    <p className="text-4xl font-bold mb-4">Temp: {main.temp} °F</p>
+    <img src={handleIcon(weather[0].description)} alt="Weather Icon" className='w-30 h-30 mx-auto mb-2'/>
+    <p className="text-4xl font-extrabold tracking-tight mb-4">Temp: {main.temp} °F</p>
     <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
       <div>
         <p className='font-medium'>Feels like {weatherData?.main?.feels_like} °F</p>
