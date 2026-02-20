@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef} from 'react';
-import * as THREE from "three"
-import CLOUDS from "vanta/dist/vanta.clouds.min"
-
+import AnimatedBackground from './components/AnimatedBackground';
 import { getWeather } from './services/weatherService';
 import SearchBar from './components/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay';
@@ -16,25 +14,6 @@ const App = () => {
     e.preventDefault();
     setCity(searchCity);
   }
-  //VANTA EFFECT
-  useEffect(() => {
-    const effect = CLOUDS({
-      el: vantaRef.current,
-      THREE: THREE,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      skyColor: 0x066d99,
-      cloudColor: 0xffffff,
-      backgroundColor: 0x4dacd4,
-      speed: 0.5,
-    })
-
-    return () => {
-      if (effect) effect.destroy()
-    }
-  }, [])
-
 
   // useEffect loads on initial render, and because city is in a dependency array the useEffect function will re run if the city value changes
   useEffect(() => {
@@ -44,10 +23,8 @@ const App = () => {
   }, [city])
 
   return (
-  <div 
-  ref={vantaRef}
-  className="min-h-screen flex flex-col items-center px-4 py-8"
-    >
+    <AnimatedBackground>
+  <div className="min-h-screen flex flex-col items-center px-4 py-8">
   {/* // className="min-h-screen bg-linear-135 from-canva-lightBlue to-canva-darkBlue flex-col items-center px-4 py-8"> */}
         <div className="w-full max-w-2x1 bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl">
           <SearchBar
@@ -58,6 +35,7 @@ const App = () => {
           <WeatherDisplay weatherData={weatherData} city={city}/>
         </div>
       </div>
+      </AnimatedBackground>
   );
 }
 
