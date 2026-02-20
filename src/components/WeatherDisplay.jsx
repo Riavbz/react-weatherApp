@@ -5,7 +5,7 @@ const WeatherDisplay = ({ weatherData, city }) => {
     const { main, weather, wind } = weatherData;
 
   return (
-    <div className='bg-white rounded-2xl shadow-md p-6'><h1 className="text-2xl font-semibold mb-4"> {city} Weather</h1>
+    <div className='bg-sky-200/70 rounded-2xl shadow-md p-6'><h1 className="text-2xl font-semibold mb-4"> {city} Weather</h1>
     <img src={handleIcon(weather[0].description)} alt="Weather Icon" />
     <p className="text-4xl font-bold mb-4">Temp: {main.temp} °F</p>
     <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
