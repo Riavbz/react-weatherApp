@@ -4,7 +4,6 @@ const SearchBar = ({ searchCity, setSearchCity, handleSubmit }) => {
         <form onSubmit={handleSubmit}
         className="flex flex-col sm:flex-row gap-3 mb-6"
         >
-        <label htmlFor="searchCity">Enter city here</label>
         <input 
         type="text" name="searchCity" id="searchCity" placeholder="Enter Location Here" value={searchCity} onChange={(e) => setSearchCity(e.target.value)} className="flex-1 px-4 py-2 border border-yellow-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500" 
         />
