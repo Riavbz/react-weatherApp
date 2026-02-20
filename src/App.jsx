@@ -20,13 +20,15 @@ const App = () => {
     .catch((err) => console.log(err));
   }, [city]);
   return (
-    <div>
+    <div className="min-h-screen bg-linear-135 from-canva-lightBlue to-canva-darkBlue flex-col items-center px-4 py-8">
+      <div className="w-full max-w-2x1">
       <SearchBar
       searchCity={searchCity}
       setSearchCity={setSearchCity}
       handleSubmit={handleSubmit}
       />
      <WeatherDisplay weatherData={weatherData} city={city}/>
+      </div>
     </div>
   )
 }
