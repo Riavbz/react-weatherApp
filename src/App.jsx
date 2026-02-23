@@ -4,7 +4,7 @@ import { getWeather } from './services/weatherService';
 import SearchBar from './components/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay';
 
-
+//Is there a way to specify by town and state?
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("New Jersey");
@@ -29,13 +29,14 @@ const App = () => {
     <AnimatedBackground>
   <div className="min-h-screen flex flex-col items-center px-4 py-8">
   {/* // className="min-h-screen bg-linear-135 from-canva-lightBlue to-canva-darkBlue flex-col items-center px-4 py-8"> */}
-        <div className="w-full max-w-2x1 bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl">
+        <div className="w-full max-w-2xl bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl">
           <SearchBar
             searchCity={searchCity}
             setSearchCity={setSearchCity}
             handleSubmit={handleSubmit}
           />
-          <WeatherDisplay weatherData={weatherData} city={city}/>
+          <WeatherDisplay 
+          weatherData={weatherData} city={city}/>
         </div>
       </div>
       </AnimatedBackground>

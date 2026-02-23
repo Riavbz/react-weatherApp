@@ -14,10 +14,11 @@ app.get("/weather", async (req, res) => {
 
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPENWEATHER_API}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPENWEATHER_API}`
     );
 
     const data = await response.json();
+    console.log("Temperature received:", data.main.temp);
 
     res.json(data);
   } catch (error) {
