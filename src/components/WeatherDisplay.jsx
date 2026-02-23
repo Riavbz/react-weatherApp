@@ -1,10 +1,10 @@
 import { handleIcon } from '../utils/handleIcon';
 import DateFunc from "./DateFunc"
-import therm from '../images/therm.png';
-import humidityImg from '../images/humidityImg.png';
-import windImg from '../images/windImg.png';
-import high_low from '../images/high_low.png';
-import temp_feels from '../images/temp_feels.png';
+import therm from '../images/therm.svg';
+import humidityImg from '../images/humidityImg.svg';
+import windImg from '../images/windImg.svg';
+import high_low from '../images/high_low.svg';
+import temp_feels from '../images/temp_feels.svg';
 
 
 const WeatherDisplay = ({ weatherData, city }) => {
@@ -12,7 +12,7 @@ const WeatherDisplay = ({ weatherData, city }) => {
     const { main, weather, wind } = weatherData;
 
   return (
-    <div className='bg-sky-200/70 rounded-2xl shadow-md p-6'>
+    <div className='bg-sky-200/70 rounded-2xl shadow-md p-4 sm:p-6'>
       <h1 className="text-3xl font-extrabold tracking-tight text-center mb-1">Weather in {city} </h1>
       <div className='text-center mb-4'>
         <DateFunc />

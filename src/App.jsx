@@ -4,12 +4,16 @@ import { getWeather } from './services/weatherService';
 import SearchBar from './components/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay';
 
-//Is there a way to specify by town and state?
+
 const App = () => {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("New Jersey");
   const [searchCity, setSearchCity] = useState("");
   const vantaRef = useRef(null)
+
   function handleSubmit(e) {
     e.preventDefault();
     if (!searchCity.trim()) {
@@ -20,9 +24,15 @@ const App = () => {
 
   // useEffect loads on initial render, and because city is in a dependency array the useEffect function will re run if the city value changes
   useEffect(() => {
+    setLoading(true)
+    setError(null)
+
     getWeather(city)
     .then((data) => setWeatherData(data))
-    .catch((err) => console.log(err));
+    .catch((err) => { console.log(err)
+      setError("City not found")
+    })
+    .finally(() => setLoading(false))
   }, [city])
 
   return (
@@ -35,6 +45,16 @@ const App = () => {
             setSearchCity={setSearchCity}
             handleSubmit={handleSubmit}
           />
+          {loading && (
+            <p className='text-white text-center mt-4 animate-pulse'>
+              Loading weather...
+            </p>
+          )}
+          {error && (
+            <p className='text-red-500 text-xl font-semibold text-center mt-4'>
+              {error}
+            </p>
+          )}
           <WeatherDisplay 
           weatherData={weatherData} city={city}/>
         </div>
